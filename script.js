@@ -419,8 +419,6 @@ function hacerPregunta() {
       ); /* Se ingresa la respuesta en SPAN para no sobreescribir el INPUT RADIO */
     span.textContent = opciones[i];
   }
-  /*  for (const respuestaEnpantalla = objetoEnpantalla[1] of objetoEnpantalla)
-        respuesta.innerHTML = `<label>${objetoEnpantalla[1]}</label>` */
 }
 const boton = document.querySelector("button");
 boton.onclick = function () {
