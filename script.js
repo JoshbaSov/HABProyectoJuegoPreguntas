@@ -514,26 +514,27 @@ for (const elemento of preguntasJson) {
 
 let contador = 0;
 const h2 = document.querySelector("h2");
-const respuesta = document.querySelector("ol");
+const listaResp = document.querySelector("ul");
 function hacerPregunta() {
 
     let objetoEnpantalla = Object.values(preguntasJson[contador]);
-    console.log(objetoEnpantalla[0]);
+    //console.log(objetoEnpantalla[0]);
     h2.innerHTML = `<h2>${objetoEnpantalla[0]}</h2>`;
 
     console.log(objetoEnpantalla[1]);
     let opciones = objetoEnpantalla[1];
-    for (const opcion of opciones) {
-        respuesta.innerHTML = `<li>${opcion}</li>`;
-    }
+    opciones.forEach(elemento => {
+        const opt1 = document.createElement("label")
+    })
+
     /* for (const respuestaEnpantalla = objetoEnpantalla[1] of objetoEnpantalla)
         respuesta.innerHTML = `<label>${objetoEnpantalla[1]}</label>` */
-
-
 }
 const boton = document.querySelector("button");
+
 boton.onclick = function () {
-    console.log("hiciste clik");
+    // console.log("hiciste clik");
     hacerPregunta();
     contador++;
 }
+
