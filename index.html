@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Juego Preguntas y Respuestas</title>
     <style src="styles.css"></style>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>Juego de Preguntas y Respuestas</h1>
+      <h1>Juego de Preguntas y Respuestas</h1>
     </header>
     <main>
-        <h2></h2> <!--AQUI IRA LA PREGUNTA SACADA DEL JSON-->
-        <ul id="listaResp"></ul>
-        <li><input type="radio" name="opcion"></li>
-        <li><input type="radio" name="opcion"></li>
-        <li><input type="radio" name="opcion"></li>
-        <li><input type="radio" name="opcion"></li>
-        <button type="submit" id="btnEnviar">ENVIAR</button>
-        <script src="script.js"></script>
-    </main>
-</body>
+      <h2></h2>
+      <!--AQUI IRA LA PREGUNTA SACADA DEL JSON-->
+      <ul id="lista">
+        <li>
+          <input type="radio" name="opcion" value="no" />
+          <span>Opcion1</span>
+        </li>
+        <li>
+          <input type="radio" name="opcion" value="no" />
+          <span>Opcion2</span>
+        </li>
+        <li>
+          <input type="radio" name="opcion" value="no" />
+          <span>Opcion3</span>
+        </li>
+        <li>
+          <input type="radio" name="opcion" value="no" />
+          <span>Opcion4</span>
+        </li>
+      </ul>
 
+      <button type="submit" id="btnEnviar">ENVIAR</button>
+      <script src="script.js"></script>
+    </main>
+  </body>
 </html>
