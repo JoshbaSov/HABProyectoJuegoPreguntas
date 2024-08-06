@@ -401,6 +401,7 @@ for (const elemento of preguntasJson) {
 
 let contador = 0;
 const h2 = document.querySelector("h2");
+
 const respuesta = document.querySelector("span");
 
 function hacerPregunta() {
@@ -421,6 +422,7 @@ function hacerPregunta() {
   }
 }
 const boton = document.querySelector("button");
+
 boton.onclick = function () {
   console.log("hiciste clik");
   hacerPregunta();
