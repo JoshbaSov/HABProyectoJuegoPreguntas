@@ -432,7 +432,9 @@ function comprobarRespuesta() {
 
   let respuestaSeleccionada = null;
   let spanRespuesta = null;
+
   //recorremos los inputs para ver cual esta checkeado
+
   for (const j of inputs) {
     //comprobamos si esta seleccionado
     if (j.checked) {
@@ -448,6 +450,8 @@ function comprobarRespuesta() {
       if (spanRespuesta.innerText === respuestaCorrecta) {
 
         console.log("acertaste")
+        aciertos++;
+        console.log(aciertos);
       }
 
     }
@@ -459,10 +463,20 @@ function comprobarRespuesta() {
   console.log(objetoEnpantalla[2]);
 
 }
-function respuestaCorrecta() {
 
+
+
+function mostrarResultado() {
+  const element = document.querySelector("#lista");
+  element.remove();
+  boton.remove();
+
+  let objetoEnpantalla = Object.values(preguntasJson[contador]);
+  h2.innerHTML = `has acertado ${aciertos} de 50`;
 }
 
+
+hacerPregunta();
 
 boton.onclick = function () {
 
@@ -470,6 +484,10 @@ boton.onclick = function () {
   comprobarRespuesta();
 
   //console.log("hiciste clik");
-  hacerPregunta();
+
   contador++;
+  hacerPregunta();
+  if (contador >= 49) {
+    mostrarResultado();
+  }
 };
