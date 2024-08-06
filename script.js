@@ -400,6 +400,7 @@ for (const elemento of preguntasJson) {
 } */
 
 let contador = 0;
+let aciertos = 0;
 const h2 = document.querySelector("h2");
 
 const respuesta = document.querySelector("span");
@@ -423,8 +424,52 @@ function hacerPregunta() {
 }
 const boton = document.querySelector("button");
 
+function comprobarRespuesta() {
+  let objetoEnpantalla = Object.values(preguntasJson[contador]);
+  let respuestaCorrecta = objetoEnpantalla[2];
+  const inputs = document.querySelectorAll("#lista input");
+  //console.log(inputs)
+
+  let respuestaSeleccionada = null;
+  let spanRespuesta = null;
+  //recorremos los inputs para ver cual esta checkeado
+  for (const j of inputs) {
+    //comprobamos si esta seleccionado
+    if (j.checked) {
+      //el .parentNode es para coger al padre es decir al li
+      respuestaSeleccionada = j.parentNode;
+      console.log(respuestaSeleccionada);
+
+      //Cogemos el span del li seleccionado
+      spanRespuesta = respuestaSeleccionada.querySelector("span");
+      //En el siguiente console log tenemos la respuesta correcta
+      console.log(spanRespuesta.innerText);
+
+      if (spanRespuesta.innerText === respuestaCorrecta) {
+
+        console.log("acertaste")
+      }
+
+    }
+
+
+  }
+
+  //esta es la respuesta correcta de la siguiente
+  console.log(objetoEnpantalla[2]);
+
+}
+function respuestaCorrecta() {
+
+}
+
+
 boton.onclick = function () {
-  console.log("hiciste clik");
+
+
+  comprobarRespuesta();
+
+  //console.log("hiciste clik");
   hacerPregunta();
   contador++;
 };
