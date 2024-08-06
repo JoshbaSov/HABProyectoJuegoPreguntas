@@ -405,13 +405,7 @@ const h2 = document.querySelector("h2");
 
 const respuesta = document.querySelector("span");
 
-function hacerPregunta() {
-  let objetoEnpantalla = Object.values(preguntasJson[contador]);
-  console.log(objetoEnpantalla[0]);
-  h2.innerHTML = `${objetoEnpantalla[0]}`;
-
-  console.log(objetoEnpantalla[1]);
-  let opciones = objetoEnpantalla[1];
+function recorrerLi(opciones) {
   const ul = document.getElementById("lista").getElementsByTagName("li");
   for (let i = 0; i < opciones.length; i++) {
     const li = ul[i];
@@ -422,6 +416,16 @@ function hacerPregunta() {
     span.textContent = opciones[i];
   }
 }
+function hacerPregunta() {
+  let objetoEnpantalla = Object.values(preguntasJson[contador]);
+  console.log(objetoEnpantalla[0]);
+  h2.innerHTML = `${objetoEnpantalla[0]}`;
+
+  console.log(objetoEnpantalla[1]);
+  let opciones = objetoEnpantalla[1];
+  recorrerLi(opciones);
+}
+
 const boton = document.querySelector("button");
 
 function comprobarRespuesta() {
@@ -448,23 +452,16 @@ function comprobarRespuesta() {
       console.log(spanRespuesta.innerText);
 
       if (spanRespuesta.innerText === respuestaCorrecta) {
-
-        console.log("acertaste")
+        console.log("acertaste");
         aciertos++;
         console.log(aciertos);
       }
-
     }
-
-
   }
 
   //esta es la respuesta correcta de la siguiente
   console.log(objetoEnpantalla[2]);
-
 }
-
-
 
 function mostrarResultado() {
   const element = document.querySelector("#lista");
@@ -475,12 +472,9 @@ function mostrarResultado() {
   h2.innerHTML = `has acertado ${aciertos} de 50`;
 }
 
-
 hacerPregunta();
 
 boton.onclick = function () {
-
-
   comprobarRespuesta();
 
   //console.log("hiciste clik");
