@@ -1,5 +1,7 @@
 "use strict";
 let preguntasJson;
+
+
 fetch("quiz.json").then(function (respuesta) {
   return respuesta.json();
 
@@ -12,7 +14,7 @@ fetch("quiz.json").then(function (respuesta) {
   let aciertos = 0;
   const h2 = document.querySelector("h2");
 
-  const respuesta = document.querySelector("span");
+  //const respuesta = document.querySelector("span");
 
   function recorrerLi(opciones) {
     const ul = document.getElementById("lista").getElementsByTagName("li");
@@ -25,6 +27,8 @@ fetch("quiz.json").then(function (respuesta) {
       span.textContent = opciones[i];
     }
   }
+
+
   function hacerPregunta() {
     let objetoEnpantalla = Object.values(preguntasJson[contador]);
     //console.log(objetoEnpantalla[0]);
@@ -35,7 +39,8 @@ fetch("quiz.json").then(function (respuesta) {
     recorrerLi(opciones);
   }
 
-  const boton = document.querySelector("button");
+  const botonEnviar = document.querySelector("#btnEnviar");
+  const botonRecargar = document.querySelector("#btnRecargar");
 
   function comprobarRespuesta() {
     let objetoEnpantalla = Object.values(preguntasJson[contador]);
@@ -68,22 +73,29 @@ fetch("quiz.json").then(function (respuesta) {
       }
     }
 
-    //esta es la respuesta correcta de la siguiente
+    //esta es la respuesta correcta 
     console.log(objetoEnpantalla[2]);
   }
 
   function mostrarResultado() {
     const element = document.querySelector("#lista");
     element.remove();
-    boton.remove();
+    botonEnviar.remove();
 
     let objetoEnpantalla = Object.values(preguntasJson[contador]);
     h2.innerHTML = `has acertado ${aciertos} de 50`;
   }
 
+
+  function recargarPagina() {
+    if (window.confirm("Quieres recargar la pagina?")) {
+      location.reload();
+    }
+  }
+
   hacerPregunta();
 
-  boton.onclick = function () {
+  botonEnviar.onclick = function () {
     comprobarRespuesta();
 
     //console.log("hiciste clik");
@@ -92,8 +104,14 @@ fetch("quiz.json").then(function (respuesta) {
     hacerPregunta();
     if (contador >= 49) {
       mostrarResultado();
+
     }
   };
+  botonRecargar.onclick = function () {
+    recargarPagina();
+  }
+
+
 
 
 
