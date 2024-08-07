@@ -80,7 +80,7 @@ fetch("quiz.json").then(function (respuesta) {
   function mostrarResultado() {
     const element = document.querySelector("#lista");
     element.remove();
-    boton.remove();
+    botonEnviar.remove();
 
     let objetoEnpantalla = Object.values(preguntasJson[contador]);
     h2.innerHTML = `has acertado ${aciertos} de 50`;
