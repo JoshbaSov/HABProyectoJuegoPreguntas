@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Quiz</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Juego Preguntas y Respuestas</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
+  <body>
+    <header>
+      <h1 title="Pagina principal"><a href="index.html">Movie Quiz</a></h1>
+    </header>
+    <main>
+      <h2></h2>
+      <!--AQUI IRA LA PREGUNTA SACADA DEL JSON-->
+      <ul id="lista">
+        <li>
+          <input id="inp1" type="radio" name="opcion" value="respuesta1" />
+          <span></span>
+        </li>
+        <li>
+          <input id="inp2" type="radio" name="opcion" value="respuesta2" />
+          <span></span>
+        </li>
+        <li>
+          <input id="inp3" type="radio" name="opcion" value="respuesta3" />
+          <span></span>
+        </li>
+        <li>
+          <input id="inp4" type="radio" name="opcion" value="respuesta4" />
+          <span></span>
+        </li>
+      </ul>
 
-<body>
-  <header>
-    <h1>Movie Quiz</h1>
-  </header>
-  <main>
-    <h2></h2>
-    <!--AQUI IRA LA PREGUNTA SACADA DEL JSON-->
-    <ul id="lista">
-      <li>
-        <input id="inp1" type="radio" name="opcion" value="respuesta1" />
-        <span></span>
-      </li>
-      <li>
-        <input id="inp2" type="radio" name="opcion" value="respuesta2" />
-        <span></span>
-      </li>
-      <li>
-        <input id="inp3" type="radio" name="opcion" value="respuesta3" />
-        <span></span>
-      </li>
-      <li>
-        <input id="inp4" type="radio" name="opcion" value="respuesta4" />
-        <span></span>
-      </li>
-    </ul>
-
-    <button type="submit" id="btnEnviar">ENVIAR</button>
-    <button type="submit" id="btnRecargar">VOLVER A EMPEZAR</button>
-    <script src="script.js"></script>
-  </main>
-</body>
-
+      <button type="submit" id="btnEnviar">ENVIAR</button>
+      <button type="submit" id="btnRecargar">VOLVER A EMPEZAR</button>
+      <script src="script.js"></script>
+    </main>
+  </body>
 </html>
