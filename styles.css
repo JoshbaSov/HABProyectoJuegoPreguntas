@@ -38,6 +38,11 @@ h1 {
   text-shadow: 6px 6px 8px black;
 }
 
+a {
+  text-decoration: none;
+  color: burlywood;
+}
+
 li {
   display: flex;
   gap: 15px;
@@ -52,4 +57,14 @@ h2 {
 button {
   margin-left: 1.8rem;
   padding: 3px;
+}
+
+#botonindex {
+  display: flex;
+  width: 200px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  text-align: center;
 }
