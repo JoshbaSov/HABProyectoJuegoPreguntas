@@ -9,10 +9,10 @@ fetch("quiz.json").then(function (respuesta) {
   //console.log(obj);
   preguntasJson = obj;
 
-  let numeroPreguntas = prompt("inserta el numero de preguntas, pista cuanto más grande sea este más probabilidad de ganar entre 1 y 50");
-  if (numeroPreguntas > 50 || numeroPreguntas < 1) {
-    numeroPreguntas = prompt("tienen que ser menos de 50 o mas de 0")
-  }
+  let numeroPreguntas;
+  do {
+    numeroPreguntas = parseInt(prompt("inserte cuantas preguntas entre 1 y 50. PISTA: cuantas mas insertes mas opciones de ganar"));
+  } while (isNaN(numeroPreguntas) || numeroPreguntas < 1 || numeroPreguntas >= 50);
   let contador = 0;
   let aciertos = 0;
   const h2 = document.querySelector("h2");
@@ -121,7 +121,6 @@ fetch("quiz.json").then(function (respuesta) {
     contador++;
     hacerPregunta();
     if (contador >= numeroPreguntas) {
-      1
       mostrarResultado();
     }
   };
