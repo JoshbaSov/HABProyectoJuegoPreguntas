@@ -11,6 +11,20 @@ ul {
   padding: 2rem;
 }
 
+p {
+  padding: 1rem;
+}
+
+#p1 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+ol {
+  list-style-type: decimal;
+  padding: 2rem;
+}
+
 header {
   font-family: "Permanent Marker", cursive;
   background-color: blue;
