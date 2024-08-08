@@ -9,7 +9,10 @@ fetch("quiz.json").then(function (respuesta) {
   //console.log(obj);
   preguntasJson = obj;
 
-
+  let numeroPreguntas = prompt("inserta el numero de preguntas, pista cuanto más grande sea este más probabilidad de ganar entre 1 y 50");
+  if (numeroPreguntas > 50 || numeroPreguntas < 1) {
+    numeroPreguntas = prompt("tienen que ser menos de 50 o mas de 0")
+  }
   let contador = 0;
   let aciertos = 0;
   const h2 = document.querySelector("h2");
@@ -76,14 +79,29 @@ fetch("quiz.json").then(function (respuesta) {
     //esta es la respuesta correcta 
     console.log(objetoEnpantalla[2]);
   }
-
+  function guardarResultados(puntos) {
+    const nombre = prompt("Introduce tu nombre de usuario si quieres guardar la partida");
+    if (!nombre) return;
+    const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+    ranking.push({ nombre, puntos });
+    ranking.sort((a, b) => b.puntos - a.puntos); //esta funcion flecha lo que hace es guardar los puntos
+    localStorage.setItem("ranking", JSON.stringify(ranking.slice(0, 10))); //esta funcion nos guarda el top 10
+    console.log(ranking);
+  }
   function mostrarResultado() {
+    //console.log("entro");
+
     const element = document.querySelector("#lista");
     element.remove();
     botonEnviar.remove();
 
+    guardarResultados(aciertos);
+
     let objetoEnpantalla = Object.values(preguntasJson[contador]);
-    h2.innerHTML = `has acertado ${aciertos} de 50`;
+    h2.innerHTML = `has acertado ${aciertos} de ${numeroPreguntas}`;
+
+
+    location.replace("final.html");
   }
 
 
@@ -102,19 +120,14 @@ fetch("quiz.json").then(function (respuesta) {
 
     contador++;
     hacerPregunta();
-    if (contador >= 49) {
+    if (contador >= numeroPreguntas) {
+      1
       mostrarResultado();
-
     }
   };
   botonRecargar.onclick = function () {
     recargarPagina();
   }
-
-
-
-
-
 
 }).catch(function (e) {
   console.error("ha surgido el siguiente error: " + e)
