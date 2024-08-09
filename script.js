@@ -110,8 +110,10 @@ fetch("quiz.json")
       if (!nombre) return;
       const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
       ranking.push({ nombre, puntos });
-      ranking.sort((a, b) => b.puntos - a.puntos); //esta funcion flecha lo que hace es guardar los puntos
-      localStorage.setItem("ranking", JSON.stringify(ranking.slice(0, 10))); //esta funcion nos guarda el top 10
+      ranking.sort((a, b) => b.puntos - a.puntos); //esta funcion flecha lo que hace es guardar los /puntos
+      localStorage.setItem("ranking", JSON.stringify(ranking.slice(0, 10))); //esta funcion nos guarda el top 10 
+      localStorage.removeItem("puntuacion");
+      localStorage.setItem("puntuacion", aciertos);
       console.log(ranking);
     }
     function mostrarResultado() {
@@ -121,11 +123,12 @@ fetch("quiz.json")
       element.remove();
       botonEnviar.remove(); */
 
-      guardarResultados(aciertos);
+      
 
       /*      let objetoEnpantalla = Object.values(preguntasJson[contador]);
       h2.innerHTML = `has acertado ${aciertos} de ${numeroPreguntas}`;
  */
+      guardarResultados(aciertos);
       location.replace("final.html");
     }
 
@@ -134,6 +137,7 @@ fetch("quiz.json")
         location.reload();
       }
     }
+
 
     hacerPregunta();
 
@@ -146,6 +150,7 @@ fetch("quiz.json")
     botonSiguiente.onclick = function () {
       contador++;
       botonEnviar.disabled = false;
+      //Se le hace -1 porque los humanos contamos desde 1 pero la maquina empieza desde 0
       if (contador > numeroPreguntas - 1) {
         mostrarResultado();
       } else {
