@@ -29,6 +29,8 @@ p {
 ol > * {
   list-style: decimal;
   padding: 2rem;
+
+
 }
 
 header {
@@ -66,5 +68,10 @@ button {
   justify-content: center;
   align-items: center;
   color: black;
+  text-align: center;
+}
+
+#listaRanking {
+  padding: 1rem;
   text-align: center;
 }
