@@ -32,6 +32,7 @@ fetch("quiz.json")
             "span"
           ); /* Se ingresa la respuesta en SPAN para no sobreescribir el INPUT RADIO */
         span.textContent = opciones[i];
+        span.style.color = "black";
       }
     }
 
@@ -47,6 +48,7 @@ fetch("quiz.json")
 
     const botonEnviar = document.querySelector("#btnEnviar");
     const botonRecargar = document.querySelector("#btnRecargar");
+    const botonSiguiente = document.querySelector("#btnSiguiente");
 
     function comprobarRespuesta() {
       let objetoEnpantalla = Object.values(preguntasJson[contador]);
@@ -75,30 +77,31 @@ fetch("quiz.json")
             console.log("acertaste");
             aciertos++;
             console.log(aciertos);
+            spanRespuesta.style.color = "green";
+            spanRespuesta.innerText = respuestaCorrecta + "✅";
+          } else {
+            spanRespuesta.style.color = "red";
+            spanRespuesta.innerText = spanRespuesta.innerText + "❌";
+            buscarCorrecta(inputs, respuestaCorrecta); //esta es la respuesta correcta
           }
         }
       }
-
-      //esta es la respuesta correcta
-      /* buscarCorrecta(inputs, respuestaCorrecta); */
-      console.log(objetoEnpantalla[2]);
     }
 
-    /* function buscarCorrecta(opciones, respuestaCorrecta) {
+    function buscarCorrecta(opciones, respuestaCorrecta) {
       const ul = document.getElementById("lista").getElementsByTagName("li");
+
       for (let i = 0; i < opciones.length; i++) {
         const li = ul[i];
         const span = li.querySelector("span");
         let spanActual = span.textContent;
-        console.log(
-          spanActual
-        ); 
-        /* if (respuestaCorrecta === spanActual) {
-          console.log(spanActual + "este");
-          spanActual.style.textDecoration = "underline";
+        if (respuestaCorrecta === spanActual) {
+          console.log(spanActual + " este");
+          span.style.color = "green";
+          span.innerText = span.innerText + "✅";
         }
       }
-    } */
+    }
 
     function guardarResultados(puntos) {
       const nombre = prompt(
@@ -118,11 +121,11 @@ fetch("quiz.json")
 
       /* const element = document.querySelector("#lista");
       element.remove();
-      botonEnviar.remove();
+      botonEnviar.remove(); */
 
       
 
-      let objetoEnpantalla = Object.values(preguntasJson[contador]);
+      /*      let objetoEnpantalla = Object.values(preguntasJson[contador]);
       h2.innerHTML = `has acertado ${aciertos} de ${numeroPreguntas}`;
  */
       guardarResultados(aciertos);
@@ -140,10 +143,13 @@ fetch("quiz.json")
 
     botonEnviar.onclick = function () {
       comprobarRespuesta();
+      botonEnviar.disabled = "disabled";
+    };
+    //console.log("hiciste clik");
 
-      //console.log("hiciste clik");
-
+    botonSiguiente.onclick = function () {
       contador++;
+      botonEnviar.disabled = false;
       //Se le hace -1 porque los humanos contamos desde 1 pero la maquina empieza desde 0
       if (contador > numeroPreguntas - 1) {
         mostrarResultado();
@@ -151,6 +157,7 @@ fetch("quiz.json")
         hacerPregunta();
       }
     };
+
     botonRecargar.onclick = function () {
       recargarPagina();
     };
