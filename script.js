@@ -23,6 +23,72 @@ fetch("quiz.json")
 
     //const respuesta = document.querySelector("span");
 
+<<<<<<< HEAD
+  let numeroPreguntas;
+  do {
+    numeroPreguntas = parseInt(prompt("inserte cuantas preguntas entre 1 y 50. PISTA: cuantas mas insertes mas opciones de ganar"));
+  } while (isNaN(numeroPreguntas) || numeroPreguntas < 1 || numeroPreguntas >= 50);
+  let contador = 0;
+  let aciertos = 0;
+  const h2 = document.querySelector("h2");
+
+  //const respuesta = document.querySelector("span");
+
+  function recorrerLi(opciones) {
+    const ul = document.getElementById("lista").getElementsByTagName("li");
+    for (let i = 0; i < opciones.length; i++) {
+      const li = ul[i];
+      const span =
+        li.querySelector(
+          "span"
+        ); /* Se ingresa la respuesta en SPAN para no sobreescribir el INPUT RADIO */
+      span.textContent = opciones[i];
+    }
+  }
+
+
+  function hacerPregunta() {
+    let objetoEnpantalla = Object.values(preguntasJson[contador]);
+    //console.log(objetoEnpantalla[0]);
+    h2.innerHTML = `${objetoEnpantalla[0]}`;
+
+    //console.log(objetoEnpantalla[1]);
+    let opciones = objetoEnpantalla[1];
+    recorrerLi(opciones);
+  }
+
+  const botonEnviar = document.querySelector("#btnEnviar");
+  const botonRecargar = document.querySelector("#btnRecargar");
+
+  function comprobarRespuesta() {
+    let objetoEnpantalla = Object.values(preguntasJson[contador]);
+    let respuestaCorrecta = objetoEnpantalla[2];
+    const inputs = document.querySelectorAll("#lista input");
+    //console.log(inputs)
+
+    let respuestaSeleccionada = null;
+    let spanRespuesta = null;
+
+    //recorremos los inputs para ver cual esta checkeado
+
+    for (const j of inputs) {
+      //comprobamos si esta seleccionado
+      if (j.checked) {
+        //el .parentNode es para coger al padre es decir al li
+        respuestaSeleccionada = j.parentNode;
+        console.log(respuestaSeleccionada);
+
+        //Cogemos el span del li seleccionado
+        spanRespuesta = respuestaSeleccionada.querySelector("span");
+        //En el siguiente console log tenemos la respuesta correcta
+        console.log(spanRespuesta.innerText);
+
+        if (spanRespuesta.innerText === respuestaCorrecta) {
+          console.log("acertaste");
+          aciertos++;
+          console.log(aciertos);
+        }
+=======
     function recorrerLi(opciones) {
       const ul = document.getElementById("lista").getElementsByTagName("li");
       for (let i = 0; i < opciones.length; i++) {
@@ -32,6 +98,7 @@ fetch("quiz.json")
             "span"
           ); /* Se ingresa la respuesta en SPAN para no sobreescribir el INPUT RADIO */
         span.textContent = opciones[i];
+>>>>>>> main
       }
     }
 
