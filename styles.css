@@ -12,6 +12,12 @@ ul {
 }
 
 li {
+  /* display: flex; */
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.lijuego {
   display: flex;
   gap: 15px;
   margin-bottom: 10px;
@@ -26,11 +32,9 @@ p {
   text-decoration: underline;
 }
 
-ol > * {
-  list-style: decimal;
+ol {
+  list-style-position: inside;
   padding: 2rem;
-
-
 }
 
 header {
@@ -63,6 +67,7 @@ button {
 
 #botonindex {
   display: flex;
+  flex-direction: column;
   width: 200px;
   height: 100px;
   justify-content: center;
@@ -71,7 +76,7 @@ button {
   text-align: center;
 }
 
-#listaRanking {
-  padding: 1rem;
+.listaRanking {
+  padding: 0.5rem;
   text-align: center;
 }
