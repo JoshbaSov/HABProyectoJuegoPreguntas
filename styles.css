@@ -11,6 +11,12 @@ ul {
   padding: 2rem;
 }
 
+li {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
 p {
   padding: 1rem;
 }
@@ -20,9 +26,11 @@ p {
   text-decoration: underline;
 }
 
-ol {
-  list-style-type: decimal;
+ol > * {
+  list-style: decimal;
   padding: 2rem;
+
+
 }
 
 header {
@@ -43,12 +51,6 @@ a {
   color: burlywood;
 }
 
-li {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 10px;
-}
-
 h2 {
   padding: 1rem;
   text-align: left;
@@ -66,5 +68,10 @@ button {
   justify-content: center;
   align-items: center;
   color: black;
+  text-align: center;
+}
+
+#listaRanking {
+  padding: 1rem;
   text-align: center;
 }

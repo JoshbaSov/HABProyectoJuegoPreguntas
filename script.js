@@ -23,72 +23,7 @@ fetch("quiz.json")
 
     //const respuesta = document.querySelector("span");
 
-<<<<<<< HEAD
-  let numeroPreguntas;
-  do {
-    numeroPreguntas = parseInt(prompt("inserte cuantas preguntas entre 1 y 50. PISTA: cuantas mas insertes mas opciones de ganar"));
-  } while (isNaN(numeroPreguntas) || numeroPreguntas < 1 || numeroPreguntas >= 50);
-  let contador = 0;
-  let aciertos = 0;
-  const h2 = document.querySelector("h2");
 
-  //const respuesta = document.querySelector("span");
-
-  function recorrerLi(opciones) {
-    const ul = document.getElementById("lista").getElementsByTagName("li");
-    for (let i = 0; i < opciones.length; i++) {
-      const li = ul[i];
-      const span =
-        li.querySelector(
-          "span"
-        ); /* Se ingresa la respuesta en SPAN para no sobreescribir el INPUT RADIO */
-      span.textContent = opciones[i];
-    }
-  }
-
-
-  function hacerPregunta() {
-    let objetoEnpantalla = Object.values(preguntasJson[contador]);
-    //console.log(objetoEnpantalla[0]);
-    h2.innerHTML = `${objetoEnpantalla[0]}`;
-
-    //console.log(objetoEnpantalla[1]);
-    let opciones = objetoEnpantalla[1];
-    recorrerLi(opciones);
-  }
-
-  const botonEnviar = document.querySelector("#btnEnviar");
-  const botonRecargar = document.querySelector("#btnRecargar");
-
-  function comprobarRespuesta() {
-    let objetoEnpantalla = Object.values(preguntasJson[contador]);
-    let respuestaCorrecta = objetoEnpantalla[2];
-    const inputs = document.querySelectorAll("#lista input");
-    //console.log(inputs)
-
-    let respuestaSeleccionada = null;
-    let spanRespuesta = null;
-
-    //recorremos los inputs para ver cual esta checkeado
-
-    for (const j of inputs) {
-      //comprobamos si esta seleccionado
-      if (j.checked) {
-        //el .parentNode es para coger al padre es decir al li
-        respuestaSeleccionada = j.parentNode;
-        console.log(respuestaSeleccionada);
-
-        //Cogemos el span del li seleccionado
-        spanRespuesta = respuestaSeleccionada.querySelector("span");
-        //En el siguiente console log tenemos la respuesta correcta
-        console.log(spanRespuesta.innerText);
-
-        if (spanRespuesta.innerText === respuestaCorrecta) {
-          console.log("acertaste");
-          aciertos++;
-          console.log(aciertos);
-        }
-=======
     function recorrerLi(opciones) {
       const ul = document.getElementById("lista").getElementsByTagName("li");
       for (let i = 0; i < opciones.length; i++) {
@@ -98,7 +33,9 @@ fetch("quiz.json")
             "span"
           ); /* Se ingresa la respuesta en SPAN para no sobreescribir el INPUT RADIO */
         span.textContent = opciones[i];
->>>>>>> main
+
+        span.style.color = "black";
+
       }
     }
 
@@ -114,6 +51,7 @@ fetch("quiz.json")
 
     const botonEnviar = document.querySelector("#btnEnviar");
     const botonRecargar = document.querySelector("#btnRecargar");
+    const botonSiguiente = document.querySelector("#btnSiguiente");
 
     function comprobarRespuesta() {
       let objetoEnpantalla = Object.values(preguntasJson[contador]);
@@ -142,30 +80,31 @@ fetch("quiz.json")
             console.log("acertaste");
             aciertos++;
             console.log(aciertos);
+            spanRespuesta.style.color = "green";
+            spanRespuesta.innerText = respuestaCorrecta + "✅";
+          } else {
+            spanRespuesta.style.color = "red";
+            spanRespuesta.innerText = spanRespuesta.innerText + "❌";
+            buscarCorrecta(inputs, respuestaCorrecta); //esta es la respuesta correcta
           }
         }
       }
-
-      //esta es la respuesta correcta
-      /* buscarCorrecta(inputs, respuestaCorrecta); */
-      console.log(objetoEnpantalla[2]);
     }
 
-    /* function buscarCorrecta(opciones, respuestaCorrecta) {
+    function buscarCorrecta(opciones, respuestaCorrecta) {
       const ul = document.getElementById("lista").getElementsByTagName("li");
+
       for (let i = 0; i < opciones.length; i++) {
         const li = ul[i];
         const span = li.querySelector("span");
         let spanActual = span.textContent;
-        console.log(
-          spanActual
-        ); 
-        /* if (respuestaCorrecta === spanActual) {
-          console.log(spanActual + "este");
-          spanActual.style.textDecoration = "underline";
+        if (respuestaCorrecta === spanActual) {
+          console.log(spanActual + " este");
+          span.style.color = "green";
+          span.innerText = span.innerText + "✅";
         }
       }
-    } */
+    }
 
     function guardarResultados(puntos) {
       const nombre = prompt(
@@ -174,8 +113,10 @@ fetch("quiz.json")
       if (!nombre) return;
       const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
       ranking.push({ nombre, puntos });
-      ranking.sort((a, b) => b.puntos - a.puntos); //esta funcion flecha lo que hace es guardar los puntos
+      ranking.sort((a, b) => b.puntos - a.puntos); //esta funcion flecha lo que hace es guardar los /puntos
       localStorage.setItem("ranking", JSON.stringify(ranking.slice(0, 10))); //esta funcion nos guarda el top 10
+      localStorage.removeItem("puntuacion");
+      localStorage.setItem("puntuacion", aciertos);
       console.log(ranking);
     }
     function mostrarResultado() {
@@ -183,13 +124,12 @@ fetch("quiz.json")
 
       /* const element = document.querySelector("#lista");
       element.remove();
-      botonEnviar.remove();
+      botonEnviar.remove(); */
 
-      guardarResultados(aciertos);
-
-      let objetoEnpantalla = Object.values(preguntasJson[contador]);
+      /*      let objetoEnpantalla = Object.values(preguntasJson[contador]);
       h2.innerHTML = `has acertado ${aciertos} de ${numeroPreguntas}`;
  */
+      guardarResultados(aciertos);
       location.replace("final.html");
     }
 
@@ -199,24 +139,27 @@ fetch("quiz.json")
       }
     }
 
-    if (numeroPreguntas === 50) {
-      numeroPreguntas = numeroPreguntas - 1;
-    }
     hacerPregunta();
 
     botonEnviar.onclick = function () {
       comprobarRespuesta();
+      botonEnviar.disabled = "disabled";
+      botonSiguiente.disabled = false;
+    };
+    //console.log("hiciste clik");
 
-      //console.log("hiciste clik");
-
+    botonSiguiente.onclick = function () {
       contador++;
-
-      if (contador > numeroPreguntas) {
+      botonEnviar.disabled = false;
+      botonSiguiente.disabled = "disabled";
+      //Se le hace -1 porque los humanos contamos desde 1 pero la maquina empieza desde 0
+      if (contador > numeroPreguntas - 1) {
         mostrarResultado();
       } else {
         hacerPregunta();
       }
     };
+
     botonRecargar.onclick = function () {
       recargarPagina();
     };
