@@ -33,6 +33,7 @@ fetch("quiz.json")
           ); /* Se ingresa la respuesta en SPAN para no sobreescribir el INPUT RADIO */
         span.textContent = opciones[i];
         span.style.color = "black";
+
       }
     }
 
@@ -67,6 +68,7 @@ fetch("quiz.json")
           //el .parentNode es para coger al padre es decir al li
           respuestaSeleccionada = j.parentNode;
           console.log(respuestaSeleccionada);
+
 
           //Cogemos el span del li seleccionado
           spanRespuesta = respuestaSeleccionada.querySelector("span");
@@ -134,7 +136,8 @@ fetch("quiz.json")
       if (window.confirm("Quieres recargar la pagina?")) {
         location.reload();
       }
-    }
+    } 10
+
 
     hacerPregunta();
 

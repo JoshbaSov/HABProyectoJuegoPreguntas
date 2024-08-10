@@ -24,7 +24,7 @@ li {
 }
 
 p {
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 #p1 {
@@ -49,6 +49,10 @@ header {
 h1 {
   text-shadow: 6px 6px 8px black;
 }
+body {
+  height: 76.5vh;
+  background-color: rgb(253, 251, 248);
+}
 
 a {
   text-decoration: none;
@@ -59,10 +63,22 @@ h2 {
   padding: 1rem;
   text-align: left;
 }
+#h2Final {
+  text-align: center;
+}
+#tituloTop {
+  text-align: center;
+}
 
 button {
   margin-left: 1.8rem;
   padding: 3px;
+  font-weight: bold;
+  background-color: aquamarine;
+  margin-bottom: 3%;
+}
+#btnRecargar {
+  background-color: red;
 }
 
 #botonindex {
