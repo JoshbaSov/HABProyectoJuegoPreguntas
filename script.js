@@ -69,6 +69,7 @@ fetch("quiz.json")
           respuestaSeleccionada = j.parentNode;
           console.log(respuestaSeleccionada);
 
+
           //Cogemos el span del li seleccionado
           spanRespuesta = respuestaSeleccionada.querySelector("span");
           //En el siguiente console log tenemos la respuesta correcta
@@ -135,7 +136,8 @@ fetch("quiz.json")
       if (window.confirm("Quieres recargar la pagina?")) {
         location.reload();
       }
-    }
+    } 10
+
 
     hacerPregunta();
 
