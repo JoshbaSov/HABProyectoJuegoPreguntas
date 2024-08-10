@@ -22,7 +22,7 @@ fetch("quiz.json")
     const h2 = document.querySelector("h2");
 
     //const respuesta = document.querySelector("span");
-
+ 
     function recorrerLi(opciones) {
       const ul = document.getElementById("lista").getElementsByTagName("li");
       for (let i = 0; i < opciones.length; i++) {
@@ -33,6 +33,7 @@ fetch("quiz.json")
           ); /* Se ingresa la respuesta en SPAN para no sobreescribir el INPUT RADIO */
         span.textContent = opciones[i];
         span.style.color = "black";
+
       }
     }
 
