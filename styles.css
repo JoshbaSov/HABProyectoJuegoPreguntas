@@ -15,6 +15,7 @@ li {
   /* display: flex; */
   gap: 15px;
   margin-bottom: 10px;
+  list-style: decimal;
 }
 
 .lijuego {
@@ -25,6 +26,7 @@ li {
 
 p {
   padding: 0.5rem;
+  font-style: italic;
 }
 
 #p1 {
@@ -51,7 +53,7 @@ h1 {
 }
 
 body {
-  height: 76.5vh;
+  height: 100%;
   background-color: rgb(253, 251, 248);
 }
 
@@ -102,6 +104,10 @@ button {
   display: table;
   color: red;
   margin-top: 1rem;
+}
+
+#finalBody {
+  overflow: hidden;
 }
 
 table {
