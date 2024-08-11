@@ -20,8 +20,9 @@ fetch("quiz.json")
     let contador = 0;
     let aciertos = 0;
     const h2 = document.querySelector("h2");
-
-    //const respuesta = document.querySelector("span");
+    const botonEnviar = document.querySelector("#btnEnviar");
+    const botonRecargar = document.querySelector("#btnRecargar");
+    const botonSiguiente = document.querySelector("#btnSiguiente");
 
     function recorrerLi(opciones) {
       const ul = document.getElementById("lista").getElementsByTagName("li");
@@ -33,7 +34,6 @@ fetch("quiz.json")
           ); /* Se ingresa la respuesta en SPAN para no sobreescribir el INPUT RADIO */
         span.textContent = opciones[i];
         span.style.color = "black";
-
       }
     }
 
@@ -46,10 +46,6 @@ fetch("quiz.json")
       let opciones = objetoEnpantalla[1];
       recorrerLi(opciones);
     }
-
-    const botonEnviar = document.querySelector("#btnEnviar");
-    const botonRecargar = document.querySelector("#btnRecargar");
-    const botonSiguiente = document.querySelector("#btnSiguiente");
 
     function comprobarRespuesta() {
       let objetoEnpantalla = Object.values(preguntasJson[contador]);
@@ -67,18 +63,17 @@ fetch("quiz.json")
         if (j.checked) {
           //el .parentNode es para coger al padre es decir al li
           respuestaSeleccionada = j.parentNode;
-          console.log(respuestaSeleccionada);
-
+          //console.log(respuestaSeleccionada);
 
           //Cogemos el span del li seleccionado
           spanRespuesta = respuestaSeleccionada.querySelector("span");
           //En el siguiente console log tenemos la respuesta correcta
-          console.log(spanRespuesta.innerText);
+          //console.log(spanRespuesta.innerText);
 
           if (spanRespuesta.innerText === respuestaCorrecta) {
-            console.log("acertaste");
+            //console.log("acertaste");
             aciertos++;
-            console.log(aciertos);
+            //console.log(aciertos);
             spanRespuesta.style.color = "green";
             spanRespuesta.innerText = respuestaCorrecta + "✅";
           } else {
@@ -121,15 +116,6 @@ fetch("quiz.json")
       //console.log(puntuacion);
     }
     function mostrarResultado() {
-      //console.log("entro");
-
-      /* const element = document.querySelector("#lista");
-      element.remove();
-      botonEnviar.remove(); */
-
-      /*      let objetoEnpantalla = Object.values(preguntasJson[contador]);
-      h2.innerHTML = `has acertado ${aciertos} de ${numeroPreguntas}`;
- */
       guardarResultados(aciertos);
       location.replace("final.html");
     }
@@ -138,8 +124,7 @@ fetch("quiz.json")
       if (window.confirm("Quieres recargar la pagina?")) {
         location.reload();
       }
-    } 10
-
+    }
 
     hacerPregunta();
 
