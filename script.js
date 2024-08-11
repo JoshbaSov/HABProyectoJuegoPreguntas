@@ -114,9 +114,11 @@ fetch("quiz.json")
       ranking.push({ nombre, puntos });
       ranking.sort((a, b) => b.puntos - a.puntos); //esta funcion flecha lo que hace es guardar los /puntos
       localStorage.setItem("ranking", JSON.stringify(ranking.slice(0, 10))); //esta funcion nos guarda el top 10
-      localStorage.removeItem("puntuacion");
-      localStorage.setItem("puntuacion", aciertos);
-      console.log(ranking);
+
+      //console.log(ranking)
+      localStorage.setItem("puntuacion", puntos);
+
+      //console.log(puntuacion);
     }
     function mostrarResultado() {
       //console.log("entro");

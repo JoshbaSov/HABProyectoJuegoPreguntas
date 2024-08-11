@@ -4,29 +4,38 @@ let h2Final = document.querySelector("h2");
 let btnReiniciar = document.querySelector("button");
 
 const ranking = Object.values(JSON.parse(localStorage.getItem("ranking")));
-console.log(ranking);
-let puntuacion = localStorage.getItem("puntuacion");
+const puntuacion = localStorage.getItem("puntuacion");
+//console.log(puntuacion);
 h2Final.innerHTML = `Tu puntuación final es ${puntuacion}`;
 //console.log(ranking);
 btnReiniciar.onclick = function () {
   if (window.confirm("Quieres recargar la pagina?")) {
+    localStorage.removeItem("puntuacion");
     location.replace("index.html");
   }
 };
-const ol = document.querySelector("ol");
+const tabla = document.querySelector("table");
+const tbody = document.querySelector("tbody");
+//console.log(tbody);
 
 ranking.forEach((element) => {
-  console.log(element);
-  /* let olRank = ; */
-  let newLI = document.createElement("li");
-  newLI.setAttribute("class", "listaRanking");
-  let newContent = document.createTextNode(
-    `${element.nombre} ${element.puntos} puntos`
-  );
-  newLI.appendChild(newContent);
-  ol.appendChild(newLI);
-  console.log({ ol });
-  /* document.body.insertBefore(newLI, document.querySelector("ol")) */
+  //console.log(element);
+  let newTr = document.createElement("tr"); //AÑADE FILA
 
-  //pRanking.textContent = element.toString();
+  let nombreTd = document.createElement("td"); //AÑADE COLUMNA1
+  nombreTd.setAttribute("class", "listaRanking");
+  let nombreContent = document.createTextNode(
+    `${element.nombre}`);
+  nombreTd.appendChild(nombreContent); //AÑADE NOMBRE A LA COLUMNA 1
+  newTr.appendChild(nombreTd);
+
+  let puntosTd = document.createElement("td"); //AÑADE COLUMNA1
+  puntosTd.setAttribute("class", "listaRanking");
+  let puntosContent = document.createTextNode(
+    `${element.puntos}`);
+  puntosTd.appendChild(puntosContent); //AÑADE PUNTOS A LA COLUMNA 2
+  newTr.appendChild(puntosTd);
+
+
+  tbody.appendChild(newTr);
 });

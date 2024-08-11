@@ -49,6 +49,7 @@ header {
 h1 {
   text-shadow: 6px 6px 8px black;
 }
+
 body {
   height: 76.5vh;
   background-color: rgb(253, 251, 248);
@@ -63,9 +64,11 @@ h2 {
   padding: 1rem;
   text-align: left;
 }
+
 #h2Final {
   text-align: center;
 }
+
 #tituloTop {
   text-align: center;
 }
@@ -77,6 +80,7 @@ button {
   background-color: aquamarine;
   margin-bottom: 3%;
 }
+
 #btnRecargar {
   background-color: red;
 }
@@ -92,7 +96,38 @@ button {
   text-align: center;
 }
 
-.listaRanking {
-  padding: 0.5rem;
+#btnVolver {
+  float: inherit;
+  margin: 0 auto;
+  display: table;
+  color: red;
+  margin-top: 1rem;
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 80%;
+  margin: auto;
+  font-family: monospace;
   text-align: center;
+  color: black;
+  text-transform: uppercase;
+  font-size: large;
+  border: solid;
+}
+
+th {
+  color: rgb(220, 0, 0);
+  font-size: larger;
+  border: solid;
+  border-color: black;
+  background-color: aliceblue;
+}
+
+td {
+  text-transform: none;
+  font-style: italic;
+  padding: 0.5rem;
+  border-style: groove;
 }
