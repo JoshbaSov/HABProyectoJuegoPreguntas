@@ -109,6 +109,7 @@ fetch("quiz.json")
       const nombre = prompt(
         "Introduce tu nombre de usuario si quieres guardar la partida"
       );
+      localStorage.setItem("puntuacion", puntos); //GUARDA LA PUNTUACION SACADA PARA USARLO EN LA PANTALLA FINAL
       if (!nombre) return;
       const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
       ranking.push({ nombre, puntos });
@@ -116,7 +117,6 @@ fetch("quiz.json")
       localStorage.setItem("ranking", JSON.stringify(ranking.slice(0, 10))); //esta funcion nos guarda el top 10
 
       //console.log(ranking)
-      localStorage.setItem("puntuacion", puntos);
 
       //console.log(puntuacion);
     }
